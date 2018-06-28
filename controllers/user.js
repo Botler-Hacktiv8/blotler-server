@@ -10,8 +10,8 @@ module.exports = {
     }).then((token) => {
       res.header('x-auth', token).status(201).send({
         status: 'oke',
-        user: user,
-      })
+        message: 'register success',
+      });
     }).catch((e) => {
       res.status(400).send({
         status: 'error',
@@ -31,9 +31,14 @@ module.exports = {
     let values = req.body;
     User.findByCredentials(values.email, values.password).then((user) => {
       return user.generateAuthToken().then((token) => {
+        const userSendData = {
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email
+        }
         res.header('x-auth', token).status(200).send({
           status: 'oke',
-          user: user,
+          user: userSendData,
           message: 'login success',
         })
       })

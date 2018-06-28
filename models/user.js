@@ -9,11 +9,13 @@ const UserSchema = new Schema({
     type: String,
     required: true,
     trim: true,
+    minlength: 1,
   },
   lastName: {
     type: String,
     required: true,
     trim: true,
+    minlength: 1,
   },
   email: {
     type: String,
@@ -53,7 +55,6 @@ UserSchema.methods.generateAuthToken = function() {
   let access = 'auth';
   const payload = {
     _id: user._id.toHexString(),
-    username: user.username,
     email: user.email,
     access
   }
@@ -78,22 +79,21 @@ UserSchema.statics.findByToken = function(token) {
     '_id': decode._id,
     'tokens.token': token,
     'tokens.access': 'auth',
-  }).select('_id username email tokens');
+  }).select('_id firstName lastName email');
 }
 
 UserSchema.statics.findByCredentials = function(email, password) {
-  let user = this;
-  return user.findOne({ email })
-  // .select('_id username email tokens')
-  .then((user) => {
-    if (!user) return Promise.reject();
-    return new Promise((resolve, reject) => {
-      bcrypt.compare(password, user.password, (err, result) => {
-        if (result) resolve(user);
-        else reject();
+  let User = this;
+  return User.findOne({ email }) // .select('_id firstName lastName email')
+    .then((user) => {
+      if (!user) return Promise.reject();
+      return new Promise((resolve, reject) => {
+        bcrypt.compare(password, user.password, (err, result) => {
+          if (result) resolve(user);
+          else reject();
+        })
       })
     })
-  })
 }
 
 UserSchema.methods.removeToken = function(token) {
