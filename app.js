@@ -1,3 +1,6 @@
+// require config
+require('dotenv').config();
+require('./config/config');
 // library
 const express = require('express');
 const path = require('path');
@@ -5,10 +8,6 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
-// require config
-require('dotenv').config();
-require('./config/config');
 
 // db connection
 require('./lib/connection');
