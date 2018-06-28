@@ -57,7 +57,7 @@ UserSchema.methods.generateAuthToken = function() {
     email: user.email,
     access
   }
-  const token = jwt.sign(payload, "IAMSUPERPOWERS").toString();
+  const token = jwt.sign(payload, "BOTLERSECRET").toString();
   user.tokens.push({ access, token });
   return user.save().then(() => {
     return token;
@@ -69,7 +69,7 @@ UserSchema.statics.findByToken = function(token) {
   let decode;
 
   try {
-    decode = jwt.verify(token, "IAMSUPERPOWERS");
+    decode = jwt.verify(token, "BOTLERSECRET");
   } catch(e) {
     return Promise.reject();
   }
