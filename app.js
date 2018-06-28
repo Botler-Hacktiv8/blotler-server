@@ -14,6 +14,7 @@ require('./lib/connection');
 // router
 const index = require('./routes/index');
 const users = require('./routes/users');
+const tasks = require('./routes/tasks');
 
 const app = express();
 
@@ -29,5 +30,6 @@ app.use(cors());
 
 app.use('/', index);
 app.use('/api', users);
+app.use('/api/tasks', tasks);
 
 module.exports = app;
