@@ -4,6 +4,7 @@
 
 ### Back-end :wrench:
 - [x] Expressjs
+- [x] JWT
 - [x] MongoDB
 - [x] Mongoose
 - [x] Mocha & Chai (TDD)
