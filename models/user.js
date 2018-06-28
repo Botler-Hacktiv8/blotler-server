@@ -59,7 +59,6 @@ UserSchema.methods.generateAuthToken = function() {
     access
   }
   const token = jwt.sign(payload, "BOTLERSECRET").toString();
-  console.log('generateAuthToken', payload, token);
   user.tokens.push({ access, token });
   return user.save().then(() => {
     return token;

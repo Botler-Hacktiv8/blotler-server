@@ -43,7 +43,8 @@ module.exports = {
           tasks: result,
           message: 'Success find taks!'
         });
-      }).catch((e) => {
+      })
+      .catch((e) => {
         res.status(400).send({
           status: 'error',
           message: e.message,
@@ -53,7 +54,7 @@ module.exports = {
   /**
    * Function findOne().
    *
-   * Function one task
+   * Find one task
    *
    */
   findOne(req, res) {
