@@ -37,6 +37,25 @@ const dummyUser = [
   }
 ];
 
+const dummyTask = [{
+  _id: new ObjectID(),
+  text: "This is the first tasks",
+  timeStart: new Date(),
+  timeEnd: new Date(),
+  locationName: 'Pondok Indah Mall',
+  address: 'Jalan Simatupang No. 1',
+  _creator: userId_1
+},{
+  _id: new ObjectID(),
+  text: "This is the secound tasks",
+  timeStart: new Date(),
+  timeEnd: new Date(),
+  locationName: 'Pondok Indah Mall',
+  address: 'Jalan Simatupang No. 1',
+  _creator: userId_2
+}];
+
 module.exports = {
   dummyUser,
+  dummyTask
 }

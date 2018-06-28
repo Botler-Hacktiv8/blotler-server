@@ -10,7 +10,6 @@ const taskSchema = new Schema({
   },
   timeStart: {
     type: Date,
-    required: true,
     default: null,
   },
   timeEnd: {
