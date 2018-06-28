@@ -129,5 +129,39 @@ describe('POST /api/login', () => {
       });
   });
 
-  
+  it ('Invalid login', (done) => {
+    request(app)
+      .post('/api/login')
+      .send({
+        email: dummyUser[1].email,
+        password: dummyUser[1].password + 'abc',
+      })
+      .expect(400)
+      .expect((result) => {
+        expect(result.headers['x-auth']).to.not.exist;
+      })
+      .end((err, result) => {
+        if (err) return done(err);
+        User.findById(dummyUser[1]._id).then((user) => {
+          expect(user.tokens.length).to.equal(1);
+          done();
+        }).catch((e) => done(e));
+      })
+  });
 });
+
+describe('DELETE /api/logout', () => {
+  it('Remove auth token', (done) => {
+    request(app)
+      .delete('/api/logout')
+      .set('x-auth', dummyUser[0].tokens[0].token)
+      .expect(200)
+      .end((err, res) => {
+        if (err) return done(err);
+        User.findById(dummyUser[0]._id).then((user) => {
+          expect(user.tokens.length).to.equal(0);
+          done();
+        }).catch((e) => done(e));
+      });
+  })
+})
