@@ -2,6 +2,12 @@ const { ObjectID } = require('mongodb');
 const { Task } = require('./../models/task');
 
 module.exports = {
+  /**
+   * Function create().
+   *
+   * Function create task
+   *
+   */
   create(req, res) {
     const values = req.body;
     const payload = {
@@ -22,7 +28,12 @@ module.exports = {
       });
     });
   },
-
+  /**
+   * Function find().
+   *
+   * Function find all tasks
+   *
+   */
   find(req, res) {
     Task.find({})
       .populate('_creator', 'username')
@@ -39,7 +50,12 @@ module.exports = {
         });
       });
   },
-
+  /**
+   * Function findOne().
+   *
+   * Function one task
+   *
+   */
   findOne(req, res) {
     const id = req.params.id;
     if (!ObjectID.isValid(id)) {
@@ -70,7 +86,12 @@ module.exports = {
       });
     })
   },
-
+  /**
+   * Function update().
+   *
+   * Update task
+   *
+   */
   update(req, res) {
     const id = req.params.id;
     const values = req.body;
@@ -101,7 +122,12 @@ module.exports = {
       });
     });
   },
-
+  /**
+   * Function destroy().
+   *
+   * Remove task
+   *
+   */
   destroy(req, res) {
     const id = req.params.id;
 

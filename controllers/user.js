@@ -2,6 +2,12 @@ const { ObjectID } = require('mongodb');
 const { User } = require('./../models/user');
 
 module.exports = {
+  /**
+   * Function register().
+   *
+   * Create new user
+   *
+   */
   register(req, res) {
     const values = req.body;
     const user = new User(values);
@@ -19,14 +25,24 @@ module.exports = {
       });
     })
   },
-
+  /**
+   * Function findMe().
+   *
+   * Find user detail by Token
+   *
+   */
   findMe(req, res) {
     res.status(200).send({
       status: 'oke',
       user: req.user
     });
   },
-
+  /**
+   * Function login().
+   *
+   * Generate new token
+   *
+   */
   login(req, res) {
     let values = req.body;
     User.findByCredentials(values.email, values.password).then((user) => {
@@ -49,7 +65,12 @@ module.exports = {
       });
     })
   },
-   
+  /**
+   * Function logout().
+   *
+   * Remove user token
+   *
+   */
   logout(req, res) {
     req.user.removeToken(req.token).then(() => {
       res.status(200).send({
