@@ -23,7 +23,7 @@ describe('GET /api/tasks', () => {
       .expect(200)
       .expect((result) => {
         expect(result.body.status).to.equal('oke');
-        expect(result.body.tasks.length).to.equal(2);
+        expect(result.body.tasks.length).to.equal(1);
       })
       .end(done);
   });
