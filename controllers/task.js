@@ -35,8 +35,7 @@ module.exports = {
    *
    */
   find(req, res) {
-    Task.find({})
-      .populate('_creator', 'username')
+    Task.find({ _creator: req.user._id })
       .then((result) => {
         res.status(200).send({
           status: 'oke',
@@ -67,7 +66,8 @@ module.exports = {
     }
 
     Task.findOne({
-      _id: id
+      _id: id,
+      _creator: req.user._id
     }).then((result) => {
       if (!result) {
         return res.status(404).send({
