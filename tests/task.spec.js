@@ -129,7 +129,7 @@ describe('PATCH /api/tasks/:id', () => {
       .expect(200)
       .expect((result) => {
         expect(result.body.status).to.equal('oke');
-        expect(result.body.data.text).to.equal(text);
+        expect(result.body.task.text).to.equal(text);
       }).end(done);
   });
 

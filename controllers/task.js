@@ -113,7 +113,7 @@ module.exports = {
       }
       res.status(200).send({
         status: 'oke',
-        data: result,
+        task: result,
         message: 'Success update task!'
       });
     }).catch((e) => {
