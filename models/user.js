@@ -27,6 +27,12 @@ const UserSchema = new Schema({
       message: '{VALUE} is not a valid email'
     }
   },
+  address: {
+    type: String,
+    required: true,
+    trim: true,
+    minlength: 10
+  },
   password: {
     type: String,
     required: true,
@@ -79,7 +85,7 @@ UserSchema.statics.findByToken = function(token) {
     '_id': decode._id,
     'tokens.token': token,
     'tokens.access': 'auth',
-  }).select('_id firstName lastName email');
+  }).select('_id firstName lastName email address');
 }
 
 UserSchema.statics.findByCredentials = function(email, password) {
