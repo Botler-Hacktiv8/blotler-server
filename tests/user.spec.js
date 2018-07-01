@@ -25,10 +25,11 @@ describe('POST /api/register', () => {
     const firstName = 'Iswanul';
     const lastName = 'Umam';
     const email = 'user126@gmail.com';
+    const address = 'Jalan Sultan Iskandar Muda No.7, RT.5/RW.9, Kebayoran Lama Selatan, Kebayoran Lama, RT.5/RW.9, Kby. Lama Sel., Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12240';
     const password = 'user126';
     request(app)
       .post('/api/register')
-      .send({ firstName, lastName, email, password })
+      .send({ firstName, lastName, email, address, password })
       .expect(201)
       .expect((result) => {
         expect(result.headers['x-auth']).to.exist;
@@ -49,10 +50,11 @@ describe('POST /api/register', () => {
     const firstName = 'user127';
     const lastName = 'user127';
     const email = dummyUser[0].email;
+    const address = 'Jalan Sultan Iskandar Muda No.7, RT.5/RW.9, Kebayoran Lama Selatan, Kebayoran Lama, RT.5/RW.9, Kby. Lama Sel., Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12240';
     const password = 'user127';
     request(app)
       .post('/api/register')
-      .send({ firstName, lastName, email, password })
+      .send({ firstName, lastName, email, address, password })
       .expect(400)
       .end(done);
   });
@@ -61,10 +63,11 @@ describe('POST /api/register', () => {
     const firstName = 'user127';
     const lastName = 'user127';
     const email = 'user127gmail.com';
+    const address = 'Jalan Sultan Iskandar Muda No.7, RT.5/RW.9, Kebayoran Lama Selatan, Kebayoran Lama, RT.5/RW.9, Kby. Lama Sel., Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12240';
     const password = 'user127';
     request(app)
       .post('/api/register')
-      .send({ firstName, lastName, email, password })
+      .send({ firstName, lastName, email, address, password })
       .expect(400)
       .end(done);
   });
@@ -73,10 +76,11 @@ describe('POST /api/register', () => {
     const firstName = 'user12';
     const lastName = 'user12';
     const email = 'user128gmail.com';
+    const address = 'Jalan Sultan Iskandar Muda No.7, RT.5/RW.9, Kebayoran Lama Selatan, Kebayoran Lama, RT.5/RW.9, Kby. Lama Sel., Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12240';
     const password = 'without_number';
     request(app)
       .post('/api/register')
-      .send({ firstName, lastName, email, password })
+      .send({ firstName, lastName, email, address, password })
       .expect(400)
       .end(done);
   });

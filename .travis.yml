@@ -1,0 +1,21 @@
+language: node_js
+
+node_js:
+  - "stable"
+
+install:
+ - npm install
+
+script:
+ - npm test
+
+notifications:
+  email:
+    recipients:
+      - umam@sepulsa.com
+    on_success: always
+    on_failure: always
+
+branches:
+ only:
+ - development
