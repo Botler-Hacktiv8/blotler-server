@@ -11,6 +11,7 @@ const dummyUser = [
     lastName: 'user123',
     email: 'user123@gmail.com',
     password: 'user123',
+    address: 'Jalan Sultan Iskandar Muda No.7, RT.5/RW.9, Kebayoran Lama Selatan, Kebayoran Lama, RT.5/RW.9, Kby. Lama Sel., Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12240',
     tokens: [{
       access: 'auth',
       token: jwt.sign({
@@ -26,6 +27,7 @@ const dummyUser = [
     lastName: 'user125',
     email: 'user125@gmail.com',
     password: 'user125',
+    address: 'Jalan Sultan Iskandar Muda No.7, RT.5/RW.9, Kebayoran Lama Selatan, Kebayoran Lama, RT.5/RW.9, Kby. Lama Sel., Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12240',
     tokens: [{
       access: 'auth',
       token: jwt.sign({
