@@ -10,19 +10,19 @@ const taskSchema = new Schema({
   },
   timeStart: {
     type: Date,
-    default: null,
+    required: true,
   },
   timeEnd: {
     type: Date,
-    default: null
+    required: true,
   },
   locationName: {
     type: String,
-    default: null,
+    required: true,
   },
   address: {
     type: String,
-    default: null
+    required: true,
   },
   _creator: {
     type: mongoose.Schema.Types.ObjectId,
